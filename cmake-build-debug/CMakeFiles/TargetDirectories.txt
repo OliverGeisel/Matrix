@@ -1,3 +1,0 @@
-C:/Users/Oliver/CLionProjects/Matrix/cmake-build-debug/CMakeFiles/Programm.dir
-C:/Users/Oliver/CLionProjects/Matrix/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Oliver/CLionProjects/Matrix/cmake-build-debug/CMakeFiles/rebuild_cache.dir
