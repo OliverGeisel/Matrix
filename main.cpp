@@ -2,6 +2,7 @@
 #include <vector>
 #include "random"
 #include "string"
+#include "time.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Matrix {
 private:
     unsigned int rowcount, columncount;
     string s = "hallo";
-    vector <vector<double>> content;
+    vector<vector<double>> content;
 public:
     void multiply(double factor) {
         for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
@@ -20,7 +21,6 @@ public:
             }
         }
     }
-
 
 
     Matrix operator+(Matrix &other) {
@@ -47,7 +47,7 @@ public:
 
     Matrix(unsigned int size, bool random = false) {
         columncount = rowcount = size;
-        content = vector < vector < double >> ();
+        content = vector<vector<double >>();
         for (int row = 0; row < size; row++) {
             content.emplace_back(vector<double>());
             for (int column = 0; column < size; column++) {
@@ -74,7 +74,7 @@ public:
 
     Matrix(unsigned int size, double value = 0.0) {
         columncount = rowcount = size;
-        content = vector < vector < double >> ();
+        content = vector<vector<double >>();
         for (int row = 0; row < size; row++) {
             content.emplace_back(vector<double>());
             for (int column = 0; column < size; column++) {
@@ -98,6 +98,7 @@ public:
             }
             cout << endl;
         }
+        cout << endl;
     }
 
 private:
@@ -128,8 +129,20 @@ int main() {
     Matrix result = matrix + add;
     result.print();
     Matrix uni = Matrix::Union_Matrix(10);
-    uni.multiply(3.5);
-    matrix.multiply(2);
+    uni.multiply(0.5);
+    Matrix r = matrix * uni;
+    r.print();
+    Matrix big = Matrix(512, true);
+    Matrix big2 = Matrix(512, true);
+    long start=time(0);
+    Matrix big_result = big + big2;
+    long end=time(0);
+    cout<<"Benötigte Zeit: "<<end-start<<endl;
+    long start2=time(0);
+    Matrix big_product = big *big2;
+    long end2=time(0);
+    cout<<"Benötigte Zeit: "<<end2-start2<<endl;
+
     string a;
     //cin >> a;
     return 0;
