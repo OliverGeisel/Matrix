@@ -16,7 +16,7 @@ public:
     void multiply(double factor) {
         for (int currentColumn = 0; currentColumn < this->columcount; currentColumn++) {
             for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
-                this->.content[currentColumn][currentRow] *= factor;
+                this->content[currentColumn][currentRow] *= factor;
             }
         }
     }
