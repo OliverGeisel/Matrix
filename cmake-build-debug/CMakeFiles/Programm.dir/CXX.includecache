@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Oliver/Desktop/proseminar/Programm/main.cpp
+C:/Users/Oliver/CLionProjects/Matrix/main.cpp
 iostream
 -
 vector
 -
 random
-C:/Users/Oliver/Desktop/proseminar/Programm/random
+C:/Users/Oliver/CLionProjects/Matrix/random
 string
-C:/Users/Oliver/Desktop/proseminar/Programm/string
+C:/Users/Oliver/CLionProjects/Matrix/string
 

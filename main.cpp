@@ -9,12 +9,12 @@ using namespace std;
 class Matrix {
 
 private:
-    unsigned int rowcount, columcount;
+    unsigned int rowcount, columncount;
     string s = "hallo";
     vector <vector<double>> content;
 public:
     void multiply(double factor) {
-        for (int currentColumn = 0; currentColumn < this->columcount; currentColumn++) {
+        for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
             for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
                 this->content[currentColumn][currentRow] *= factor;
             }
@@ -25,7 +25,7 @@ public:
 
     Matrix operator+(Matrix &other) {
         Matrix back = Matrix(this->rowcount, 0.0);
-        for (int currentColumn = 0; currentColumn < this->columcount; currentColumn++) {
+        for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
             for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
                 back.content[currentColumn][currentRow] = this->content[currentColumn][currentRow] +
                                                           other.content[currentColumn][currentRow];
@@ -36,7 +36,7 @@ public:
 
     Matrix operator*(Matrix &other) {
         Matrix back = Matrix(this->rowcount, 0.0);
-        for (int currentColumn = 0; currentColumn < this->columcount; currentColumn++) {
+        for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
             for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
                 back.content[currentColumn][currentRow] = this->productZell(other, currentColumn, currentRow);
             }
@@ -46,7 +46,7 @@ public:
 
 
     Matrix(unsigned int size, bool random = false) {
-        columcount = rowcount = size;
+        columncount = rowcount = size;
         content = vector < vector < double >> ();
         for (int row = 0; row < size; row++) {
             content.emplace_back(vector<double>());
@@ -73,7 +73,7 @@ public:
     }
 
     Matrix(unsigned int size, double value = 0.0) {
-        columcount = rowcount = size;
+        columncount = rowcount = size;
         content = vector < vector < double >> ();
         for (int row = 0; row < size; row++) {
             content.emplace_back(vector<double>());
@@ -92,7 +92,7 @@ public:
     }
 
     void print() {
-        for (int currentRow = 0; currentRow < this->columcount; currentRow++) {
+        for (int currentRow = 0; currentRow < this->columncount; currentRow++) {
             for (int currentColumn = 0; currentColumn < this->rowcount; currentColumn++) {
                 cout << this->content[currentColumn][currentRow] << ";";
             }
@@ -103,7 +103,7 @@ public:
 private:
     double sumOfRow(int row) {
         double back = 0.0;
-        for (int currentColumn = 0; currentColumn < this->columcount; currentColumn++) {
+        for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
             back += this->content[currentColumn][row];
         }
         return back;
@@ -111,7 +111,7 @@ private:
 
     double productZell(Matrix &other, int currentColumn, int currentRow) {
         double back = 0.0;
-        for (int run = 0; run < this->columcount; run++) {
+        for (int run = 0; run < this->columncount; run++) {
             back += this->content[run][currentRow] * other.content[currentColumn][run];
         }
         return back;
@@ -128,7 +128,9 @@ int main() {
     Matrix result = matrix + add;
     result.print();
     Matrix uni = Matrix::Union_Matrix(10);
+    uni.multiply(3.5);
+    matrix.multiply(2);
     string a;
-    cin >> a;
+    //cin >> a;
     return 0;
 }
