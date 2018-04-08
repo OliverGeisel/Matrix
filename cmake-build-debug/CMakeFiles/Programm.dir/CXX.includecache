@@ -6,15 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Oliver/CLionProjects/Matrix/main.cpp
+C:/Users/Oliver/Desktop/proseminar/Programm/main.cpp
 iostream
+-
+iomanip
 -
 vector
 -
 random
-C:/Users/Oliver/CLionProjects/Matrix/random
+C:/Users/Oliver/Desktop/proseminar/Programm/random
 string
-C:/Users/Oliver/CLionProjects/Matrix/string
+C:/Users/Oliver/Desktop/proseminar/Programm/string
 time.h
-C:/Users/Oliver/CLionProjects/Matrix/time.h
+C:/Users/Oliver/Desktop/proseminar/Programm/time.h
+chrono
+-
 

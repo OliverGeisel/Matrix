@@ -1,8 +1,11 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include "random"
 #include "string"
 #include "time.h"
+#include <chrono>
+
 
 using namespace std;
 
@@ -94,7 +97,7 @@ public:
     void print() {
         for (int currentRow = 0; currentRow < this->columncount; currentRow++) {
             for (int currentColumn = 0; currentColumn < this->rowcount; currentColumn++) {
-                cout << this->content[currentColumn][currentRow] << ";";
+                cout << setw(3) << this->content[currentColumn][currentRow] << ";";
             }
             cout << endl;
         }
@@ -134,16 +137,33 @@ int main() {
     r.print();
     Matrix big = Matrix(512, true);
     Matrix big2 = Matrix(512, true);
-    long start=time(0);
+    long start = time(0);
     Matrix big_result = big + big2;
-    long end=time(0);
-    cout<<"Benötigte Zeit: "<<end-start<<endl;
-    long start2=time(0);
-    Matrix big_product = big *big2;
-    long end2=time(0);
-    cout<<"Benötigte Zeit: "<<end2-start2<<endl;
-
+    long end = time(0);
+    cout << "Benötigte Zeit: " << end - start << endl;
+    using namespace std::chrono;
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    Matrix big_product = big * big2;
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+    duration<double, std::milli> time_span = t2 - t1;
+    cout << "Benötigte Zeit: " << time_span.count()<<" ms"<< endl;
+    Matrix max = Matrix(512*2, true);
+    Matrix max2 = Matrix(512*2, true);
+    cout<<"starte MAx Test"<<endl;
+    high_resolution_clock::time_point start1 = high_resolution_clock::now();
+    Matrix max_product = max * max2;
+    high_resolution_clock::time_point end1 = high_resolution_clock::now();
+    duration<double, std::milli> time_span1 = end1 - start1;
+    cout << "Benötigte Zeit: " << time_span1.count()<<" ms"<< endl;
+    Matrix epic = Matrix(512*4, true);
+    Matrix epic2 = Matrix(512*4, true);
+    cout<<"starte Epic Test"<<endl;
+    high_resolution_clock::time_point start3 = high_resolution_clock::now();
+    Matrix epic_product = epic * epic2;
+    high_resolution_clock::time_point end3 = high_resolution_clock::now();
+    duration<double, std::milli> time_span2 = end3 - start3;
+    cout << "Benötigte Zeit: " << time_span2.count()<<" ms"<< endl;
     string a;
-    //cin >> a;
+    cin >> a;
     return 0;
 }
