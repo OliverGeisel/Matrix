@@ -30,17 +30,17 @@ Matrix Matrix::operator+(Matrix &other) {
 }
 
 Matrix Matrix::operator*(Matrix &other) {
-    Matrix back = Matrix(this->rowcount, this->columncount, 0.0);
-    for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
-        for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
-            back.content[currentColumn][currentRow] = this->productCell(other, currentColumn, currentRow);
+    Matrix back = Matrix(this->rowcount, other.columncount, 0.0);
+    for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
+        for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
+            back.content[currentRow][currentColumn] = this->productCell(other, currentRow, currentColumn);
         }
     }
     return back;
 }
 
 Matrix::Matrix() {
-    rowcount=columncount=0;
+    rowcount = columncount = 0;
     content = vector<vector<double>>();
 }
 
@@ -105,7 +105,7 @@ double Matrix::sumOfRow(int row) {
 
 double Matrix::productCell(Matrix &other, int currentColumn, int currentRow) {
     double back = 0.0;
-    for (int run = 0; run < this->columncount; run++) {
+    for (int run = 0; run < this->rowcount; run++) {
         back += this->content[run][currentRow] * other.content[currentColumn][run];
     }
     return back;
