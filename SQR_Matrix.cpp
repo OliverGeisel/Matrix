@@ -2,7 +2,7 @@
 
 #include "SQR_Matrix.h"
 
-SQR_Matrix::SQR_Matrix(unsigned int n) : Matrix(n, n, 0.0) {
+SQR_Matrix::SQR_Matrix(unsigned int n=1) : Matrix(n, n, 0.0) {
 }
 
 SQR_Matrix::SQR_Matrix(unsigned int n, bool random = false) : Matrix(n, n, random) {

@@ -25,6 +25,8 @@ int main() {
     r.print();
     Matrix big = SQR_Matrix(512, true);
     Matrix big2 = SQR_Matrix(512, true);
+    Matrix rect= Matrix(3,5,true);
+    rect.print();
     long start = time(0);
     Matrix big_result = big + big2;
     long end = time(0);

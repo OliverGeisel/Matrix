@@ -13,7 +13,7 @@ using namespace std;
 void Matrix::multiply(double factor) {
     for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
         for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
-            this->content[currentColumn][currentRow] *= factor;
+            this->content[currentRow][currentColumn] *= factor;
         }
     }
 }
@@ -39,6 +39,11 @@ Matrix Matrix::operator*(Matrix &other) {
     return back;
 }
 
+Matrix::Matrix() {
+    rowcount=columncount=0;
+    content = vector<vector<double>>();
+}
+
 
 Matrix::Matrix(unsigned int row, unsigned int column, bool random = false) {
     columncount = column;
@@ -46,7 +51,7 @@ Matrix::Matrix(unsigned int row, unsigned int column, bool random = false) {
     content = std::vector<std::vector<double >>();
     for (int currrentrow = 0; currrentrow < row; currrentrow++) {
         content.emplace_back(std::vector<double>());
-        for (int currentcolumn = 0; currentcolumn < row; currentcolumn++) {
+        for (int currentcolumn = 0; currentcolumn < column; currentcolumn++) {
             content[currrentrow].push_back(random ? rand() % 100 : 0.0);
         }
     }
@@ -65,7 +70,7 @@ Matrix::Matrix(unsigned int row, unsigned int column, double value = 0.0) {
     content = vector<vector<double >>();
     for (int currentrow = 0; currentrow < row; currentrow++) {
         content.emplace_back(vector<double>());
-        for (int currentcolumn = 0; currentcolumn < row; currentcolumn++) {
+        for (int currentcolumn = 0; currentcolumn < column; currentcolumn++) {
             content[currentrow].emplace_back(value);
         }
     }
@@ -80,9 +85,9 @@ Matrix::Matrix(unsigned int row, unsigned int column, double value = 0.0) {
 }
 
 void Matrix::print() {
-    for (int currentRow = 0; currentRow < this->columncount; currentRow++) {
-        for (int currentColumn = 0; currentColumn < this->rowcount; currentColumn++) {
-            std::cout << std::setw(3) << this->content[currentColumn][currentRow] << ";";
+    for (int currentRow = 0; currentRow < this->rowcount; currentRow++) {
+        for (int currentColumn = 0; currentColumn < this->columncount; currentColumn++) {
+            std::cout << std::setw(4) << this->content[currentRow][currentColumn] << ";";
         }
         std::cout << std::endl;
     }
@@ -106,9 +111,6 @@ double Matrix::productCell(Matrix &other, int currentColumn, int currentRow) {
     return back;
 }
 
-Matrix::Matrix() {
-    content = vector<vector<double>>();
-}
 
 void Matrix::setContent(unsigned int row, unsigned int column, double value) {
     this->content[row][column] = value;
