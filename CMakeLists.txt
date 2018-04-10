@@ -3,4 +3,4 @@ project(Programm)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Programm main.cpp)
+add_executable(Programm main.cpp Matrix.cpp Matrix.h SQR_Matrix.cpp SQR_Matrix.h)
